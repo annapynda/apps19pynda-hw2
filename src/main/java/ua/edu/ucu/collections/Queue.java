@@ -9,21 +9,19 @@ public class Queue {
         return lst.getLast();
     }
 
-
     public Object dequeue() {
         Object last = lst.getLast();
         lst = lst.removeLast();
         return last;
     }
 
-    public int getSize(){
+    public int getSize() {
         return lst.size();
     }
 
-    public String toString(){
+    public String toString() {
         return lst.toString();
     }
-
 
     public void enqueue(Object e) {
         lst = lst.addFirst(e);

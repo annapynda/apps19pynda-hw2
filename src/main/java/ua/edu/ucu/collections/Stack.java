@@ -9,22 +9,20 @@ public class Stack {
         return lst.getLast();
     }
 
-
     public Object pop() {
         Object last = lst.getLast();
         lst = lst.removeLast();
         return last;
     }
 
-    public int getSize(){
+    public int getSize() {
         return lst.size();
     }
 
-    public String toString(){
+    public String toString() {
         return lst.toString();
     }
-
-
+    
     public void push(Object e) {
         lst = lst.addLast(e);
     }

@@ -108,7 +108,7 @@ public class ImmutableLinkedList implements ImmutableList {
             size += c.length;
             n1 = new Node(c[0]);
             Node n2 = n1;
-            for (int i = 1; i < c.length; i ++) {
+            for (int i = 1; i < c.length; i++) {
                 Node element = new Node(c[i]);
                 n2.setNext(element);
                 n2 = element;
@@ -132,7 +132,7 @@ public class ImmutableLinkedList implements ImmutableList {
                 n2 = n;
                 current = current.getNext();
             }
-            for (int i = 0; i < c.length; i ++) {
+            for (int i = 0; i < c.length; i++) {
                 Node nodec = new Node(c[i]);
                 n2.setNext(nodec);
                 n2 = nodec;

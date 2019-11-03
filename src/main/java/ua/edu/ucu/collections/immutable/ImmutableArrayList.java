@@ -47,7 +47,7 @@ public class ImmutableArrayList implements ImmutableList {
         System.arraycopy(myarr, 0, arrSec, 0, index);
         System.arraycopy(c, 0, arrSec, index , c.length);
         System.arraycopy(myarr, index, arrSec,
-                index + c.length,myarr.length - index);
+                index + c.length, myarr.length - index);
         return new ImmutableArrayList(arrSec);
     }
 
