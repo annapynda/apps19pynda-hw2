@@ -8,21 +8,17 @@ public class ImmutableLinkedList implements ImmutableList {
     public void check(int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
-
         }
     }
-
-    public ImmutableLinkedList(){
-        head = new Node(null);
-        size = 0;
-    }
-
     public ImmutableLinkedList(Node head, int size) {
         this.head = head;
         this.size = size;
     }
 
-
+    public ImmutableLinkedList() {
+        head = new Node(null);
+        size = 0;
+    }
 
     @Override
     public ImmutableLinkedList add(Object e) {
@@ -31,7 +27,6 @@ public class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList addFirst(Object e) {
         return (ImmutableLinkedList) add(0, e);
-
     }
 
     public ImmutableLinkedList addLast(Object e) {
@@ -46,31 +41,29 @@ public class ImmutableLinkedList implements ImmutableList {
         return get(size-1);
     }
 
-    public ImmutableLinkedList removeFirst(){
+    public ImmutableLinkedList removeFirst() {
         return (ImmutableLinkedList) remove(0);
     }
 
-    public ImmutableLinkedList removeLast(){
+    public ImmutableLinkedList removeLast() {
         return (ImmutableLinkedList) remove(size-1);
     }
-
-
 
     @Override
     public ImmutableList add(int index, Object e) {
         check(index);
         if (index == 0 && isEmpty()) {
-            size+=1;
+            size += 1;
             head = new Node(e);
             return new ImmutableLinkedList(head, size);
         }
         Node n1;
         if (index == 0) {
-            size+=1;
+            size += 1;
             n1 = new Node(e);
             Node n2 = n1;
             Node n3 = head;
-            while(n3 != null){
+            while (n3 != null) {
                 Node ncop = n3.clone();
                 n2.setNext(ncop);
                 n2 = ncop;
@@ -80,7 +73,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
         }
         else {
-            size+=1;
+            size += 1;
             Node present = head;
             Node node2 = new Node(present.getData());
             Node node3 = node2;
@@ -100,7 +93,6 @@ public class ImmutableLinkedList implements ImmutableList {
             node4.setNext(res);
             return new ImmutableLinkedList(node2, size);
         }
-
     }
 
     @Override
@@ -112,11 +104,11 @@ public class ImmutableLinkedList implements ImmutableList {
     public ImmutableList addAll(int index, Object[] c) {
         check(index);
         Node n1;
-        if(index == 0){
-            size+=c.length;
+        if (index == 0) {
+            size += c.length;
             n1 = new Node(c[0]);
             Node n2 = n1;
-            for(int i = 1; i < c.length; i ++){
+            for (int i = 1; i < c.length; i ++) {
                 Node element = new Node(c[i]);
                 n2.setNext(element);
                 n2 = element;
@@ -134,22 +126,23 @@ public class ImmutableLinkedList implements ImmutableList {
             n1 = head.clone();
             Node n2 = n1;
             Node current = head ;
-            for(int i = 0; i < index-1; i++){
+            for (int i = 0; i < index-1; i++) {
                 Node n = current.getNext().clone();
                 n2.setNext(n);
                 n2 = n;
                 current = current.getNext();
             }
-            for(int i = 0; i < c.length; i ++){
+            for (int i = 0; i < c.length; i ++) {
                 Node nodec = new Node(c[i]);
                 n2.setNext(nodec);
                 n2 = nodec;
             }
 
             Node nodef;
-            if(current.getNext().getData() == null){
+            if (current.getNext().getData() == null) {
                 nodef = current;
-            }else{
+            }
+            else {
                 nodef = current.getNext();
             }
             while(nodef != null){
@@ -176,8 +169,6 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         return n1.getData();
     }
-
-
 
     @Override
     public ImmutableList remove(int index) {
@@ -212,7 +203,6 @@ public class ImmutableLinkedList implements ImmutableList {
                 n2 = nn;
                 n3 = n3.getNext();
             }
-
         }
         return new ImmutableLinkedList(n1, size);
     }
@@ -256,27 +246,23 @@ public class ImmutableLinkedList implements ImmutableList {
     public Object[] toArray() {
         Object [] lst = new Object[size];
         Node n1 = head;
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             lst[i] = n1.getData();
             n1 = n1.getNext();
         }
         return lst;
-
     }
 
     @Override
     public String toString() {
         String res = "";
         Node n1 = head;
-        res+=n1.data;
+        res += n1.data;
 
-        while(n1.nextNode != null){
+        while (n1.nextNode != null) {
             n1 = n1.nextNode;
             res += ", "  + n1.data;
         }
         return res;
     }
-
-
-
 }

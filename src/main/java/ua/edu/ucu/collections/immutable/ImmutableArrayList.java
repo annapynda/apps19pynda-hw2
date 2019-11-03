@@ -11,11 +11,11 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList() {
-        myarr= new Object[0];
+        myarr = new Object[0];
     }
 
     public void check(int index) {
-        if (myarr.length < index){
+        if (myarr.length < index) {
             throw new IndexOutOfBoundsException();
         }
     }
@@ -31,7 +31,7 @@ public class ImmutableArrayList implements ImmutableList {
         Object [] arrSec = new Object[myarr.length + 1];
         System.arraycopy(myarr, 0, arrSec, 0, myarr.length);
         arrSec[myarr.length] = e;
-        System.arraycopy(myarr, index, arrSec, index + 1,  myarr.length - index);
+        System.arraycopy(myarr, index, arrSec, index + 1, myarr.length - index);
         return new ImmutableArrayList(arrSec);
     }
 
@@ -47,7 +47,7 @@ public class ImmutableArrayList implements ImmutableList {
         System.arraycopy(myarr, 0, arrSec, 0, index);
         System.arraycopy(c, 0, arrSec, index , c.length);
         System.arraycopy(myarr, index, arrSec,
-                index+c.length,myarr.length - index);
+                index + c.length,myarr.length - index);
         return new ImmutableArrayList(arrSec);
     }
 
@@ -60,7 +60,7 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableList remove(int index) {
         check(index);
-        Object [] arrSec = new Object[myarr.length-1];
+        Object [] arrSec = new Object[myarr.length - 1];
         System.arraycopy(myarr, 0, arrSec, 0, index);
         System.arraycopy(myarr, index+1, arrSec, index, myarr.length-1-index);
         return new ImmutableArrayList(arrSec);
@@ -69,7 +69,7 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableArrayList set(int index, Object e) {
         check(index);
-        myarr[index] =e;
+        myarr[index] = e;
         return new ImmutableArrayList(myarr);
     }
 

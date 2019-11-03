@@ -32,8 +32,4 @@ public class Node{
     {
         return new Node(data);
     }
-
-    public void setData(Object e) {
-        this.data = e;
-    }
 }
