@@ -26,7 +26,6 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableList add(Object e) {
         return add(size, e);
-
     }
 
 
