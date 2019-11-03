@@ -3,23 +3,20 @@ package ua.edu.ucu.collections.immutable;
 import java.util.Arrays;
 
 public class ImmutableArrayList implements ImmutableList {
-    private Object[] arr1;
+    private Object[] myarr;
     private int size;
 
-    public ImmutableArrayList(Object[] arr1) {
-        this.arr1 = arr1;
+    public ImmutableArrayList(Object[] myarr) {
+        this.myarr = myarr;
     }
 
     public ImmutableArrayList() {
-        arr1= new Object[0];
+        myarr= new Object[0];
     }
 
-
-
     public void check(int index) {
-        if (arr1.length < index){
+        if (myarr.length < index){
             throw new IndexOutOfBoundsException();
-
         }
     }
 
@@ -28,21 +25,15 @@ public class ImmutableArrayList implements ImmutableList {
         return add(size, e);
     }
 
-
-
     @Override
     public ImmutableList add(int index, Object e) {
         check(index);
-        Object [] arr2 = new Object[arr1.length + 1];
-        System.arraycopy(arr1, 0, arr2, 0, arr1.length);
-        arr2[arr1.length] = e;
-        System.arraycopy(arr1, index, arr2, index + 1,  arr1.length - index);
-        return new ImmutableArrayList(arr2);
-
-
-
+        Object [] arrSec = new Object[myarr.length + 1];
+        System.arraycopy(myarr, 0, arrSec, 0, myarr.length);
+        arrSec[myarr.length] = e;
+        System.arraycopy(myarr, index, arrSec, index + 1,  myarr.length - index);
+        return new ImmutableArrayList(arrSec);
     }
-
 
     @Override
     public ImmutableList addAll(Object[] c) {
@@ -51,46 +42,41 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
-        check(arr1.length);
-        Object [] arr2 = new Object[arr1.length + c.length];
-        System.arraycopy(arr1, 0, arr2, 0, index);
-        System.arraycopy(c, 0, arr2, index , c.length);
-        System.arraycopy(arr1, index, arr2,
-                index+c.length,arr1.length - index);
-        return new ImmutableArrayList(arr2);
-
-            
-
+        check(myarr.length);
+        Object [] arrSec = new Object[myarr.length + c.length];
+        System.arraycopy(myarr, 0, arrSec, 0, index);
+        System.arraycopy(c, 0, arrSec, index , c.length);
+        System.arraycopy(myarr, index, arrSec,
+                index+c.length,myarr.length - index);
+        return new ImmutableArrayList(arrSec);
     }
 
     @Override
     public Object get(int index) {
         check(index);
-        return arr1[index];
+        return myarr[index];
     }
 
     @Override
     public ImmutableList remove(int index) {
         check(index);
-        Object [] arr2 = new Object[arr1.length-1];
-        System.arraycopy(arr1, 0, arr2, 0, index);
-        System.arraycopy(arr1, index+1, arr2, index, arr1.length-1-index);
-        return new ImmutableArrayList(arr2);
-
+        Object [] arrSec = new Object[myarr.length-1];
+        System.arraycopy(myarr, 0, arrSec, 0, index);
+        System.arraycopy(myarr, index+1, arrSec, index, myarr.length-1-index);
+        return new ImmutableArrayList(arrSec);
     }
 
     @Override
     public ImmutableArrayList set(int index, Object e) {
         check(index);
-        arr1[index] =e;
-
-        return new ImmutableArrayList(arr1);
+        myarr[index] =e;
+        return new ImmutableArrayList(myarr);
     }
 
     @Override
     public int indexOf(Object e) {
-        for (int i = 0; i < arr1.length; i++) {
-            if (e == arr1[i]) {
+        for (int i = 0; i < myarr.length; i++) {
+            if (e == myarr[i]) {
                 return i;
             }
         }
@@ -99,7 +85,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public int size() {
-        return arr1.length;
+        return myarr.length;
     }
 
     @Override
@@ -109,27 +95,16 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        return arr1.length == 0;
+        return myarr.length == 0;
     }
 
     @Override
     public Object[] toArray() {
-        return arr1;
-
+        return myarr;
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(arr1);
+        return Arrays.toString(myarr);
     }
-
-
-
-
-
-
-
-
-
-
 }
