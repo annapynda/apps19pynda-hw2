@@ -1,6 +1,6 @@
 package ua.edu.ucu.collections.immutable;
 
-public class Node{
+public class Node implements Cloneable{
     protected Node nextNode;
     protected Object data;
 

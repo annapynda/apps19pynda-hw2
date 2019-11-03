@@ -260,14 +260,14 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public String toString() {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         Node n1 = head;
-        res += n1.data;
+        res.append(n1.data);
 
         while (n1.nextNode != null) {
             n1 = n1.nextNode;
-            res += ", "  + n1.data;
+            res.append(", ").append(n1.data);
         }
-        return res;
+        return res.toString();
     }
 }
