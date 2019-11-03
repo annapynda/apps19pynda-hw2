@@ -57,41 +57,41 @@ public class ImmutableLinkedList implements ImmutableList {
             head = new Node(e);
             return new ImmutableLinkedList(head, size);
         }
-        Node n1;
+        Node nf;
         if (index == 0) {
             size += 1;
-            n1 = new Node(e);
-            Node n2 = n1;
-            Node n3 = head;
-            while (n3 != null) {
-                Node ncop = n3.clone();
-                n2.setNext(ncop);
-                n2 = ncop;
-                n3 = n3.getNext();
+            nf = new Node(e);
+            Node ns = nf;
+            Node nt = head;
+            while (nt != null) {
+                Node ncop = nt.clone();
+                ns.setNext(ncop);
+                ns = ncop;
+                nt = nt.getNext();
             }
-            return new ImmutableLinkedList(n1, size);
+            return new ImmutableLinkedList(nf, size);
 
         }
         else {
             size += 1;
             Node present = head;
-            Node node2 = new Node(present.getData());
-            Node node3 = node2;
+            Node nodes = new Node(present.getData());
+            Node nodet = nodes;
             while (present.getNext() != null) {
                 present = present.getNext();
-                node3.setNext(new Node(present.getData()));
-                node3 = node3.getNext();
+                nodet.setNext(new Node(present.getData()));
+                nodet = nodet.getNext();
             }
-            Node node4 = node2;
+            Node nodef = nodes;
             int i = 0;
             while (i + 1 != index) {
-                node4 = node4.getNext();
+                nodef = nodef.getNext();
                 i++;
             }
             Node res = new Node(e);
-            res.setNext(node4.getNext());
-            node4.setNext(res);
-            return new ImmutableLinkedList(node2, size);
+            res.setNext(nodef.getNext());
+            nodef.setNext(res);
+            return new ImmutableLinkedList(nodes, size);
         }
     }
 
@@ -103,41 +103,41 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableList addAll(int index, Object[] c) {
         check(index);
-        Node n1;
+        Node nf;
         if (index == 0) {
             size += c.length;
-            n1 = new Node(c[0]);
-            Node n2 = n1;
+            nf = new Node(c[0]);
+            Node ns = nf;
             for (int i = 1; i < c.length; i++) {
                 Node element = new Node(c[i]);
-                n2.setNext(element);
-                n2 = element;
+                ns.setNext(element);
+                ns = element;
             }
 
             Node present = head;
             while (present != null) {
                 Node n = present.clone();
-                n2.setNext(n);
-                n2 = n;
+                ns.setNext(n);
+                ns = n;
                 present = present.getNext();
             }
         }
         else
             {
             size += c.length;
-            n1 = head.clone();
-            Node n2 = n1;
+            nf = head.clone();
+            Node ns = nf;
             Node current = head ;
             for (int i = 0; i < index-1; i++) {
                 Node n = current.getNext().clone();
-                n2.setNext(n);
-                n2 = n;
+                ns.setNext(n);
+                ns = n;
                 current = current.getNext();
             }
             for (int i = 0; i < c.length; i++) {
                 Node nodec = new Node(c[i]);
-                n2.setNext(nodec);
-                n2 = nodec;
+                ns.setNext(nodec);
+                ns = nodec;
             }
 
             Node nodef;
@@ -150,66 +150,66 @@ public class ImmutableLinkedList implements ImmutableList {
             }
             while (nodef != null) {
                 Node n = nodef.clone();
-                n2.setNext(n);
-                n2 = n;
+                ns.setNext(n);
+                ns = n;
                 nodef = nodef.getNext();
             }
         }
 
-        return new ImmutableLinkedList(n1,size);
+        return new ImmutableLinkedList(nf,size);
 
     }
 
     @Override
     public Object get(int index) {
         check(index);
-        Node n1 = head;
+        Node nf = head;
         int i = 0;
 
         while (i != index) {
-            n1 = n1.getNext();
+            nf = nf.getNext();
             i++;
         }
-        return n1.getData();
+        return nf.getData();
     }
 
     @Override
     public ImmutableList remove(int index) {
         check(index);
         size -= 1;
-        Node n1;
+        Node nf;
         if (index != 0) {
-            n1 = head.clone();
-            Node n2 = n1;
-            Node n3 = head;
+            nf = head.clone();
+            Node ns = nf;
+            Node nt = head;
             for (int i = 0; i < index - 1; i++) {
-                Node nn = n3.getNext().clone();
-                n2.setNext(nn);
-                n2 = nn;
-                n3 = n3.getNext();
+                Node nn = nt.getNext().clone();
+                ns.setNext(nn);
+                ns = nn;
+                nt = nt.getNext();
             }
-            Node pres = n3.getNext();
+            Node pres = nt.getNext();
             while (pres.getNext() != null) {
                 Node res = pres.getNext().clone();
-                n2.setNext(res);
-                n2 = res;
+                ns.setNext(res);
+                ns = res;
                 pres = pres.getNext();
             }
 
         }
         else
             {
-            n1 = head.getNext();
-            Node n2 = n1;
-            Node n3 = n1.getNext();
-            while (n3 != null) {
-                Node nn = n3.clone();
-                n2.setNext(nn);
-                n2 = nn;
-                n3 = n3.getNext();
+            nf = head.getNext();
+            Node ns = nf;
+            Node nt = nf.getNext();
+            while (nt != null) {
+                Node nn = nt.clone();
+                ns.setNext(nn);
+                ns = nn;
+                nt = nt.getNext();
             }
         }
-        return new ImmutableLinkedList(n1, size);
+        return new ImmutableLinkedList(nf, size);
     }
 
     @Override
@@ -220,14 +220,14 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public int indexOf(Object e) {
-        Node n1 = head;
+        Node nf = head;
         int i = 0;
-        while (n1 != null) {
-            if (n1.getData() == e) {
+        while (nf != null) {
+            if (nf.getData() == e) {
                 return i;
             }
             i++;
-            n1 = n1.getNext();
+            nf = nf.getNext();
         }
         return -1;
     }
@@ -250,10 +250,10 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public Object[] toArray() {
         Object [] lst = new Object[size];
-        Node n1 = head;
+        Node nf = head;
         for (int i = 0; i < size; i++) {
-            lst[i] = n1.getData();
-            n1 = n1.getNext();
+            lst[i] = nf.getData();
+            nf = nf.getNext();
         }
         return lst;
     }
@@ -261,12 +261,12 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        Node n1 = head;
-        res.append(n1.data);
+        Node nf = head;
+        res.append(nf.data);
 
-        while (n1.nextNode != null) {
-            n1 = n1.nextNode;
-            res.append(", ").append(n1.data);
+        while (nf.nextNode != null) {
+            nf = nf.nextNode;
+            res.append(", ").append(nf.data);
         }
         return res.toString();
     }
