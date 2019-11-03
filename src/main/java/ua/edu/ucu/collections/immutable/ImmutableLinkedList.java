@@ -127,7 +127,7 @@ public class ImmutableLinkedList implements ImmutableList {
             size += c.length;
             nf = head.clone();
             Node ns = nf;
-            Node current = head ;
+            Node current = head;
             for (int i = 0; i < index-1; i++) {
                 Node n = current.getNext().clone();
                 ns.setNext(n);
@@ -156,7 +156,7 @@ public class ImmutableLinkedList implements ImmutableList {
             }
         }
 
-        return new ImmutableLinkedList(nf,size);
+        return new ImmutableLinkedList(nf, size);
 
     }
 
