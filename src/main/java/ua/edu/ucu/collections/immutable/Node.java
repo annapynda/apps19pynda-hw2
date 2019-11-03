@@ -1,14 +1,14 @@
 package ua.edu.ucu.collections.immutable;
 
 public class Node{
-    public Node nextNode;
-    public Object data;
+    protected Node nextNode;
+    protected Object data;
 
-    public Node(Object data){
+    public Node(Object data) {
         this.data = data;
     }
 
-    public Node(Object data, Node node){
+    public Node(Object data, Node node) {
         this.data = data;
         this.nextNode = node;
     }
