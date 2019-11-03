@@ -3,7 +3,6 @@ package ua.edu.ucu.collections.immutable;
 public class Node{
     public Node nextNode;
     public Object data;
-//    private Node nextNode;
 
     public Node(Object data){
         this.data = data;

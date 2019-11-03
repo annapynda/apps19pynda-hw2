@@ -25,10 +25,6 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList add(Object e) {
-//        Object [] arr2 = new Object[arr1.length + 1];
-//        System.arraycopy(arr1, 0, arr2, 0, arr1.length);
-//        arr2[arr1.length] = e;
-//        return new ImmutableArrayList(arr2);
         return add(size, e);
 
     }
