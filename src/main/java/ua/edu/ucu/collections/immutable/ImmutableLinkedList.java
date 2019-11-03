@@ -115,14 +115,16 @@ public class ImmutableLinkedList implements ImmutableList {
             }
 
             Node present = head;
-            while(present != null){
+            while (present != null) {
                 Node n = present.clone();
                 n2.setNext(n);
                 n2 = n;
                 present = present.getNext();
             }
-        }else{
-            size+=c.length;
+        }
+        else
+            {
+            size += c.length;
             n1 = head.clone();
             Node n2 = n1;
             Node current = head ;
@@ -142,10 +144,11 @@ public class ImmutableLinkedList implements ImmutableList {
             if (current.getNext().getData() == null) {
                 nodef = current;
             }
-            else {
+            else
+                {
                 nodef = current.getNext();
             }
-            while(nodef != null){
+            while (nodef != null) {
                 Node n = nodef.clone();
                 n2.setNext(n);
                 n2 = n;
@@ -193,7 +196,9 @@ public class ImmutableLinkedList implements ImmutableList {
                 pres = pres.getNext();
             }
 
-        } else {
+        }
+        else
+            {
             n1 = head.getNext();
             Node n2 = n1;
             Node n3 = n1.getNext();
